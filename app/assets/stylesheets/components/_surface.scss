@@ -1,0 +1,100 @@
+.surfaceComponent {
+  position: fixed;
+  @include square;
+
+  .mainWrapper,
+  .legendWrapper {
+    position: fixed;
+    @include square;
+  }
+
+  .legendWrapper {
+    @include display-flex;
+    @include justify-content(space-between);
+    color: white;
+
+    .ruller {
+      width: 4%;
+      @include background-image(linear-gradient(to bottom, #00EB00, #EBEB00, #EB0000));
+    }
+
+    .content {
+      @include display-flex;
+      @include flex-direction(column);
+      @include justify-content(space-between);
+      width: 90%;
+      height: 100%;
+      opacity: 1;
+
+      header,
+      footer {
+        height: 121px;
+        padding: 30px 0;
+        border-bottom: 1px solid #575757;
+        font-size: 60px;
+        color: grey;
+      }
+
+      section {
+        height: calc(100% - 121px - 121px);
+        padding: 80px 0;
+
+        h1 {
+          font-size: 100px;
+          line-height: 1.4;
+        }
+      }
+
+      footer {
+        p {
+          font-size: 40px;
+          color: grey;
+        }
+      }
+    }
+  }
+
+
+  .cursorWrapper {
+    position: fixed;
+    @include display-flex;
+    @include square(200px);
+    z-index: 3;
+
+    .percent {
+      position: absolute;
+      font-size: 50px;
+      line-height: 200px;
+      color: white;
+      margin-left: -110px;
+      opacity: 0;
+    }
+
+    .cursor {
+      width: 30px;
+      height: 30px;
+      margin: auto;
+      border: 15px solid yellow;
+      border-radius: 100%;
+      opacity: 0;
+    }
+  }
+
+
+  .mainWrapper {
+    &.didVote {
+      .content { opacity: .4; }
+      .cursor { opacity: 1; }
+    }
+
+    &.touchDown {
+      .content { opacity: 0; }
+      .percent { opacity: 1; }
+
+      .cursor {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}

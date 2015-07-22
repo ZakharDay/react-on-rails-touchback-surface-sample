@@ -1,0 +1,21 @@
+@mixin square($size: 100%) {
+  width: $size;
+  height: $size;
+}
+
+* {
+  @include box-sizing(border-box);
+  @include transition(width .3s ease-out);
+  @include transition(height .3s ease-out);
+  @include transition(opacity .3s ease-out);
+  cursor: pointer;
+}
+
+html, body {
+  @include square;
+}
+
+body {
+  background-color: lighten(black, 10%);
+  font-family: Helvetica, Arial, sans-serif;
+}
